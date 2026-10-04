@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#d8eee9" />
+  <title>Earth Day — Maria Agnes Prieto</title>
+  <style>
+    :root{--ink:#19352b;--muted:#52675b;--paper:#f6f4eb;--leaf:#2d7a56;--deep:#123f38;--sky:#bfe3df;--gold:#e8b85b;--white:#fffdf7}
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#d6ebe4}body{overflow:hidden}
+    button{font:inherit}.deck{height:100vh;position:relative;overflow:hidden;background:linear-gradient(140deg,#d8eee9,#f7f3e8 56%,#dce9cc)}
+    .texture{position:absolute;inset:0;opacity:.22;pointer-events:none;background-image:radial-gradient(#6d967c 1px,transparent 1px);background-size:22px 22px;mask-image:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent)}
+    .topbar{position:absolute;z-index:5;left:clamp(20px,5vw,76px);right:clamp(20px,5vw,76px);top:24px;display:flex;align-items:center;justify-content:space-between}.brand{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--leaf)}.counter{font-variant-numeric:tabular-nums;color:var(--muted);font-size:13px;font-weight:700}.progress{position:absolute;z-index:6;top:0;left:0;height:4px;background:var(--leaf);width:0;transition:width .4s ease}
+    main{height:100%;position:relative}.slide{position:absolute;inset:0;padding:clamp(92px,11vh,125px) clamp(28px,8vw,120px) 102px;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateX(28px);pointer-events:none;transition:opacity .45s ease,transform .45s ease}.slide.active{opacity:1;transform:none;pointer-events:auto}.slide:before{content:"";position:absolute;z-index:-1;width:420px;height:420px;border-radius:50%;right:-150px;bottom:-160px;background:rgba(45,122,86,.12)}.slide:after{content:"";position:absolute;z-index:-1;width:280px;height:280px;border-radius:50%;left:-140px;top:25%;background:rgba(232,184,91,.15)}
+    .eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--leaf);font-weight:800;margin:0 0 14px}.slide h1{font-family:Georgia,serif;font-size:clamp(52px,9vw,128px);line-height:.94;letter-spacing:-.07em;margin:0 0 22px;color:var(--deep);max-width:820px}.slide h2{font-family:Georgia,serif;color:var(--deep);font-size:clamp(34px,5vw,68px);line-height:1;margin:0 0 22px;letter-spacing:-.045em}.slide h3{color:var(--deep);margin:0 0 10px;font-size:18px}.subtitle{font-size:clamp(17px,2vw,25px);color:var(--muted);max-width:650px;line-height:1.45}.byline{margin-top:30px;display:flex;gap:16px;align-items:center;color:var(--muted);font-weight:700}.dot{width:8px;height:8px;background:var(--gold);border-radius:50%;flex:none}.quote{margin:30px 0 0;padding:18px 24px;border-left:4px solid var(--gold);background:rgba(255,253,247,.6);max-width:680px;color:var(--deep);font-family:Georgia,serif;font-size:20px;line-height:1.45}.quote small{display:block;font:700 11px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--leaf);margin-top:10px}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1050px}.card{background:rgba(255,253,247,.78);border:1px solid rgba(45,122,86,.15);border-radius:18px;padding:22px;box-shadow:0 10px 35px rgba(29,76,51,.07)}.card p,.card li{color:var(--muted);line-height:1.55;font-size:15px}.card ul{padding-left:18px;margin:10px 0 0}.card p+p{margin-top:8px}.number{font:700 34px Georgia,serif;color:var(--gold);margin-bottom:12px}.wide{max-width:980px}.two{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:start;max-width:1100px}.lead{font-size:clamp(18px,2vw,24px);line-height:1.5;color:var(--muted)}.lead+.lead{margin-top:16px}.pillrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.pill{padding:8px 12px;border-radius:99px;background:#dcece3;color:var(--leaf);font-size:12px;font-weight:800}.quote-list{display:grid;gap:12px}.quote-list div{padding:14px 18px;border-radius:12px;background:rgba(255,253,247,.75);font-family:Georgia,serif;color:var(--deep);line-height:1.35}.quote-list span{display:block;font:700 10px Inter,sans-serif;color:var(--leaf);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}.linegrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;max-width:1150px}.linegrid .card{padding:18px}.linegrid b{font-family:Georgia,serif;color:var(--deep);display:block;margin-bottom:8px;line-height:1.35}
+    .earth{position:absolute;right:8%;bottom:8%;width:min(30vw,330px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#78bea0 0 8%,transparent 9%),radial-gradient(ellipse at 60% 43%,#3e8a65 0 16%,transparent 17%),radial-gradient(ellipse at 36% 64%,#5aa172 0 18%,transparent 19%),linear-gradient(145deg,#80cfc9,#367c88 70%);box-shadow:inset -35px -28px 55px rgba(9,52,63,.35),0 25px 80px rgba(31,102,85,.22)}.leafmark{position:absolute;right:8%;top:19%;font-size:84px;transform:rotate(-28deg);opacity:.55;color:var(--leaf)}
+    .controls{position:absolute;z-index:8;bottom:25px;left:clamp(20px,5vw,76px);right:clamp(20px,5vw,76px);display:flex;align-items:center;justify-content:space-between}.actions{display:flex;gap:9px}.controls button{border:1px solid rgba(25,53,43,.2);background:rgba(255,253,247,.75);color:var(--deep);border-radius:99px;padding:10px 16px;cursor:pointer;font-size:13px;font-weight:800;transition:.2s}.controls button:hover,.controls button:focus-visible{background:var(--deep);color:white;outline:none}.hint{font-size:12px;color:var(--muted)}
+    .slide{will-change:opacity,transform;overflow:hidden}.slide.active{box-shadow:inset 0 0 120px rgba(45,122,86,.08)}
+    .slide.before{transform:translateX(-28px)}.slide.rev{transform:translateX(-28px)}.slide.rev.before{transform:translateX(28px)}.slide.active{transform:translateX(0)}
+    .slide h1{background:linear-gradient(120deg,var(--deep) 20%,var(--leaf) 55%,#2f8290 95%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 6px 18px rgba(45,122,86,.2))}
+    .slide h2:after{content:"";display:block;width:90px;height:4px;border-radius:2px;margin-top:18px;background:linear-gradient(90deg,var(--leaf),var(--gold))}
+    .slide:after{content:counter(slideNum,decimal-leading-zero);counter-increment:slideNum;z-index:-1;width:auto;height:auto;border-radius:0;left:auto;top:3vh;right:3vw;background:none;color:rgba(45,122,86,.08);font:700 clamp(72px,12vw,180px)/1 Georgia,serif;pointer-events:none}
+    .deck{counter-reset:slideNum}.controls{gap:16px}.controls button{box-shadow:0 5px 16px rgba(29,76,51,.08)}
+    #dots{position:fixed;z-index:9;left:50%;bottom:70px;transform:translateX(-50%);display:flex;gap:7px;opacity:.55;transition:opacity .25s}#dots:hover{opacity:1}.dot-nav{width:9px;height:9px;padding:0;border:0;border-radius:99px;background:rgba(45,122,86,.35);cursor:pointer;transition:all .25s}.dot-nav:hover{background:var(--leaf)}.dot-nav.on{width:26px;background:linear-gradient(90deg,var(--leaf),var(--gold))}
+    #vignette{position:fixed;inset:0;z-index:7;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(18,63,56,.12) 100%)}
+    .amb-leaf{position:fixed;z-index:2;top:-30px;pointer-events:none;animation:fall linear forwards}@keyframes fall{to{transform:translate3d(var(--dx),110vh,0) rotate(520deg);opacity:0}}
+    @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}.amb-leaf{display:none}}
+
+    /* ===== Large-screen / TV readability ===== */
+    :root{--muted:#2b4438;--ink:#10291f}
+    .slide{--f:min(1.5vw,2.7vh)}.slide.dense{--f:min(1.2vw,2.05vh)}
+    .brand{font-size:max(12px,1vw)}.counter{font-size:max(13px,1.2vw);color:var(--ink)}
+    .eyebrow{font-size:max(13px,1.1vw);color:#1d6444;margin-bottom:1.2vh}
+    .slide h1{font-size:clamp(52px,9vw,150px)}
+    .slide h2{font-size:max(32px,min(4.6vw,8.2vh));margin-bottom:2.2vh}
+    .subtitle{font-size:max(18px,min(2.4vw,4.4vh));max-width:none;color:var(--ink)}
+    .byline{font-size:max(15px,var(--f));margin-top:3vh}
+    .lead{font-size:max(17px,calc(var(--f)*1.25));color:var(--ink);line-height:1.4}
+    .card{padding:max(16px,1.5vw);background:rgba(255,253,247,.94);border:1.5px solid rgba(45,122,86,.3)}
+    .card p,.card li{font-size:max(15px,var(--f));line-height:1.4;color:var(--ink)}
+    .card h3{font-size:max(17px,calc(var(--f)*1.2));margin-bottom:.8vh}
+    .linegrid b{font-size:max(17px,calc(var(--f)*1.15))}
+    .number{font-size:max(30px,3vw)}
+    .quote{font-size:max(17px,calc(var(--f)*1.15));max-width:min(1100px,100%);background:rgba(255,253,247,.9);border-left-width:6px}
+    .quote small{font-size:max(11px,.85vw)}
+    .slide:first-child .quote{max-width:52vw}
+    .quote-list div{font-size:max(17px,calc(var(--f)*1.1));background:rgba(255,253,247,.94)}
+    .quote-list span{font-size:max(11px,.85vw)}
+    .pill{font-size:max(13px,1.1vw);padding:.7vh 1vw;color:#1d6444}
+    .grid,.linegrid,.two,.wide{max-width:none}
+    .grid,.linegrid{gap:max(14px,1.4vw)}.two{gap:4vw}
+    .slide.dense .card{padding:max(14px,1.2vw)}
+    .card li{margin-bottom:.4vh}
+
+    /* ===== Mobile-friendly layout ===== */
+    @media(max-width:820px){
+      html,body{height:100%;overflow:hidden;overscroll-behavior:none}
+      .deck{height:100vh;height:100dvh}
+      .texture{opacity:.14}
+      .topbar{top:0;left:0;right:0;padding:calc(env(safe-area-inset-top,0px) + 14px) 18px 12px;gap:12px;background:linear-gradient(rgba(216,238,233,.97) 65%,rgba(216,238,233,0))}
+      .brand{font-size:10px;letter-spacing:.12em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+      .counter{font-size:13px;flex:none}
+      .slide{position:absolute;inset:0;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+        padding:calc(env(safe-area-inset-top,0px) + 62px) 20px calc(env(safe-area-inset-bottom,0px) + 104px);
+        justify-content:flex-start;--f:15px}
+      .slide.dense{--f:15px}
+      .slide:has(h1){justify-content:safe center}
+      .slide:after{top:calc(env(safe-area-inset-top,0px) + 50px);right:14px;font-size:64px}
+      .eyebrow{font-size:11px;letter-spacing:.16em;margin-bottom:10px}
+      .slide h1{font-size:clamp(44px,15vw,68px);letter-spacing:-.05em;line-height:.98;margin-bottom:16px}
+      .slide h1[style]{font-size:clamp(38px,12vw,56px)!important}
+      .slide h2{font-size:clamp(28px,8.4vw,38px);line-height:1.08;letter-spacing:-.03em;margin-bottom:18px}
+      .slide h2:after{width:64px;height:3px;margin-top:12px}
+      .subtitle{font-size:16px;line-height:1.5}
+      .byline{font-size:14px;margin-top:20px;gap:12px;align-items:flex-start}
+      .byline .dot{margin-top:7px}
+      .lead{font-size:16px;line-height:1.55}.lead+.lead{margin-top:12px}
+      .grid,.linegrid,.two,.grid[style]{grid-template-columns:1fr!important;gap:12px}
+      .card{padding:16px;border-radius:16px}
+      .card p,.card li{font-size:15px;line-height:1.55}
+      .card h3{font-size:17px}.linegrid b{font-size:16px}
+      .number{font-size:30px;margin-bottom:8px}
+      .pill{font-size:12px;padding:7px 11px}
+      .quote{font-size:16px;padding:14px 16px;margin-top:20px;max-width:100%}
+      .slide:first-child .quote{max-width:100%}
+      .quote-list div{font-size:15px;padding:12px 14px}
+      .quote-list span,.quote small{font-size:10px}
+      .slide.active{box-shadow:none}
+      .slide:before{width:260px;height:260px;right:-120px;bottom:-100px}
+      /* decorative globe flows with the content instead of overlapping text */
+      .earth,.earth[style]{position:relative!important;right:auto!important;bottom:auto!important;width:min(42vw,150px);margin:0 auto 20px!important;order:-1;flex:none}
+      .leafmark{display:none}
+      /* bottom nav: thumb-friendly */
+      .controls{left:0;right:0;bottom:0;padding:26px 16px calc(env(safe-area-inset-bottom,0px) + 14px);background:linear-gradient(rgba(246,244,235,0),rgba(236,244,236,.97) 40%)}
+      .actions{width:100%;gap:10px}
+      .controls button{flex:1;min-height:48px;padding:12px 10px;font-size:15px;background:rgba(255,253,247,.95);touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+      .controls button:hover{background:rgba(255,253,247,.95);color:var(--deep)}
+      .controls button:active{background:var(--deep);color:#fff}
+      #next{background:var(--deep)!important;color:#fff!important;border-color:var(--deep)}
+      #full,.hint,#dots,#vignette{display:none}
+    }
+    @media(max-width:820px) and (orientation:landscape) and (max-height:520px){
+      .slide{padding:54px 24px 84px}
+      .earth{display:none}
+      .slide h1{font-size:44px!important}
+      .controls{padding-top:14px}.controls button{min-height:40px}
+    }
+  </style>
+</head>
+<body>
+  <div class="deck" id="deck">
+    <div class="texture"></div><div class="progress" id="progress"></div>
+    <header class="topbar"><div class="brand">Literature / Environmental writing</div><div class="counter" id="counter">01 / 13</div></header>
+    <main>
+
+      <section class="slide active"><div class="leafmark">&#10087;</div><div class="earth"></div><p class="eyebrow">A Literary Analysis Presentation</p><h1>Earth Day</h1><p class="subtitle">by: Maria Agnes Prieto &middot; Philippine Literature </p><div class="byline"><span class="dot"></span><span>Presented by: Angel Abigail Miguel Toriba, Lenon Libres,Conixx Reserva, Leonard Anthony Quijada</span></div></section>
+
+      <section class="slide"><p class="eyebrow">01 / About the author</p><h2>About the Author</h2><div class="two"><div class="card"><h3>Maria Agnes Prieto</h3><p>Maria Agnes Prieto is a Filipino essayist known for &ldquo;Earth Day,&rdquo; a reflective essay written to commemorate the global Earth Day celebration of 1990. Detailed public biographical records about her are scarce; what can be established comes largely from the essay itself and its historical context.</p></div><div class="card"><h3>Evidence from the text &middot; Writer&rsquo;s voice</h3><p>The essay is anchored in the events of 1990: US President George Bush&rsquo;s resistance to a carbon-dioxide treaty, Jose Lutzenberger&rsquo;s appointment as Brazil&rsquo;s Environment Secretary, and the Texas coastal cleanup &mdash; placing it at the first modern Earth Day (April 1990).</p><p>Prieto writes as an engaged Filipino citizen, citing local events (the children&rsquo;s suit against DENR Secretary Jun Factoran, the Calaca and Lemery picket) and Filipino folklore (Mariang Makiling, Mariang Dolores, the anitos), blending global reporting with Philippine culture.</p></div></div></section>
+
+      <section class="slide"><p class="eyebrow">02 / Introduction</p><h2>Introduction</h2><div class="two"><div><p class="lead"><strong>&ldquo;Earth Day&rdquo; by Maria Agnes Prieto</strong> is a reflective essay written to mark Earth Day, a global event that &ldquo;linked concerned citizens together in litter clean-ups, festivals, meditation sessions, tree-planting events, theater presentations, rallies as well as bikathons all over the world.&rdquo;</p><p class="lead">The essay captures an &ldquo;Earth Renaissance&rdquo;: a worldwide awakening to environmental crisis, arguing that real change depends on <strong>individual commitment</strong>, not just governments and corporations.</p></div><div class="card"><h3>What this presentation covers</h3><p>Summary &middot; Theme and main idea &middot; The speaker and audience &middot; Moral lessons &middot; Literary analysis &middot; Conclusion</p><div class="pillrow"><span class="pill">Earth Renaissance</span><span class="pill">Individual action</span><span class="pill">Nature imagery</span><span class="pill">Filipino context</span></div></div></div></section>
+
+      <section class="slide dense"><p class="eyebrow">03 / Summary</p><h2>Summary</h2><div class="linegrid"><div class="card"><b>The global event</b><p>More than one hundred million people in 115 countries joined Earth Day, &ldquo;touted to be the largest global demonstration in history&rdquo;; even Mt. Everest was cleaned by fifteen mountaineer ecologists.</p></div><div class="card"><b>The crisis</b><p>Jolted by water shortages, pollution, floods, erratic weather, brownouts, famines, and nuclear risk, humanity realizes nature, &ldquo;too long ignored and abused,&rdquo; &ldquo;now seems to be in its death throes.&rdquo;</p></div><div class="card"><b>The turning point</b><p>The writer calls for &ldquo;give and take&rdquo; instead of a &ldquo;take-take situation,&rdquo; and stresses that concern is an &ldquo;individual commitment.&rdquo;</p></div><div class="card"><b>Ordinary heroes</b><p>Children sued DENR Secretary Jun Factoran; residents of Calaca and Lemery picketed a coal plant; Jose Lutzenberger became Brazil&rsquo;s Environment Secretary; Linda Maraniss started the Texas coastal cleanup.</p></div><div class="card"><b>The way forward</b><p>A return to the reverence of the ancients and simple everyday acts &mdash; proper disposal, refusing aerosols, rechargeable batteries, homemade cleaners &mdash; closing with Hopkins: &ldquo;nature is never spent.&rdquo;</p></div></div></section>
+
+      <section class="slide"><p class="eyebrow">04 / Theme &amp; main idea</p><h2>From &ldquo;take-take&rdquo; to give and take</h2><div class="two"><div><p class="lead">The central theme is <strong>individual responsibility for the environment</strong>: &ldquo;Who says you can&rsquo;t change the world?&rdquo; &mdash; with the emphasis on the <em>YOU, singular</em>, &ldquo;for though mass action is emphatic, it is still the individual concern and action that fuels the environmentalist movement.&rdquo;</p><div class="pillrow"><span class="pill">stewardship</span><span class="pill">reciprocity</span><span class="pill">inner balance</span><span class="pill">individual agency</span></div></div><div class="quote-list"><div><span>Key contrast</span>&ldquo;For so long now, it has only been a take-take situation&hellip; It&rsquo;s got to be give and take now.&rdquo;</div><div><span>Inner balance</span>The movement &ldquo;only reflects an inner awareness&rdquo; calling for &ldquo;a tempering of greed, for a gentling of the spirit.&rdquo;</div><div><span>Thesis</span>&ldquo;The earth cannot wait for the governments and corporate giants. It is up to you and others like you.&rdquo;</div></div></div></section>
+
+      <section class="slide"><p class="eyebrow">05 / Voice</p><h2>Who is speaking?</h2><div class="grid"><div class="card"><div class="number">I</div><h3>A first-person narrator</h3><p>No fictional characters: the voice is an unnamed narrator using &ldquo;we,&rdquo; &ldquo;us,&rdquo; and &ldquo;you&rdquo; &mdash; a fellow citizen of the earth, not a detached observer.</p></div><div class="card"><div class="number">We</div><h3>Roles the speaker takes</h3><p><strong>A witness</strong> reporting real events; <strong>a critic</strong> of consumerism and stalled governments; <strong>a persuader</strong> who directly addresses the reader.</p></div><div class="card"><div class="number">You</div><h3>The addressed audience</h3><p>Every reader, through &ldquo;you&rdquo; &mdash; plus the voices cited as evidence: George Bush, Jun Factoran, Lutzenberger, Collor de Mello, Maraniss, the children who sued, the citizens of Calaca and Lemery.</p></div></div></section>
+
+      <section class="slide dense"><p class="eyebrow">06 / Moral lesson</p><h2>Care becomes visible through habits</h2><div class="two"><div class="card"><h3>Lessons from the essay</h3><ul><li><b>Care begins in little things:</b> &ldquo;every effort counts&hellip; care is always manifested in little things.&rdquo;</li><li><b>Nature gives, humans must give back:</b> &ldquo;The earth will give back that caring to you.&rdquo;</li><li><b>Do not wait for others:</b> institutional efforts &ldquo;are slowly growing towards awareness but these efforts are insufficient.&rdquo;</li><li><b>Reconnect with nature&rsquo;s rhythms,</b> as the ancients who &ldquo;kept close to these rhythms&rdquo; knew.</li></ul></div><div class="card"><h3>In practice</h3><p><b>For students:</b> dispose of &ldquo;plastic and styrofoam junk&rdquo; properly; join campus clean-up drives.</p><p><b>At home:</b> choose &ldquo;lotions, gel or non-aerosol sprays&rdquo;; clean with &ldquo;baking soda and white vinegar&rdquo;; use rechargeable batteries.</p><p><b>As a citizen:</b> speak up like the children who sued the DENR and the residents who picketed for cleaner air.</p></div></div></section>
+
+      <section class="slide dense"><p class="eyebrow">07 / Literary analysis I</p><h2>Type, genre, and tone</h2><div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr))"><div class="card"><h3>Type &middot; Classification</h3><p><b>Type:</b> nonfiction prose<br><b>Classification:</b> reflective and persuasive essay</p></div><div class="card"><h3>Genre</h3><p>Reflective essay and social commentary on the environment, closing with a poetic quotation (Hopkins&rsquo; &ldquo;God&rsquo;s Grandeur&rdquo;), blending journalism, argument, and poetry.</p></div><div class="card"><h3>Tone</h3><ul><li><b>Urgent &mdash;</b> &ldquo;death throes&rdquo;; &ldquo;The earth cannot wait.&rdquo;</li><li><b>Critical &mdash;</b> &ldquo;needs study, not immediate action&rdquo;; &ldquo;Where&rsquo;s the funding?&rdquo;</li><li><b>Hopeful and reverent &mdash;</b> &ldquo;nature is never spent.&rdquo;</li></ul></div><div class="card"><h3>Characters</h3><p>None fictional &mdash; a first-person narrator (&ldquo;we,&rdquo; &ldquo;us,&rdquo; &ldquo;you&rdquo;), a concerned Filipino citizen; real figures (Bush, Factoran, Lutzenberger, Maraniss, the children&rsquo;s suit, Calaca and Lemery) appear as evidence.</p></div></div></section>
+
+      <section class="slide dense"><p class="eyebrow">08 / Literary analysis II</p><h2>Setting, conflict, and plot</h2><div class="two"><div class="card"><h3>Setting</h3><p><b>Place:</b> worldwide (115 countries, Mt. Everest); the Philippines (DENR, Calaca, Lemery, Laguna, Banahaw); the Texas Gulf coast; Brazil. <b>Time:</b> Earth Day, 1990. <b>Social setting:</b> a global citizens&rsquo; movement confronting consumerism and institutional inaction.</p><h3 style="margin-top:16px">Conflict</h3><ul><li><b>Man vs. Society:</b> citizens vs. polluting industries and stalled governments.</li><li><b>Man vs. Himself:</b> greed and apathy of the &ldquo;me&rdquo; generation vs. the call to care.</li><li><b>Humanity vs. Nature:</b> nature &ldquo;in its death throes&rdquo; after abuse.</li></ul></div><div class="card"><h3>Plot (flow of the argument)</h3><ul><li><b>Exposition:</b> the global Earth Day event.</li><li><b>Complication:</b> the inventory of environmental damage.</li><li><b>Crisis:</b> &ldquo;It&rsquo;s got to be give and take now.&rdquo;</li><li><b>Climax:</b> proof that individuals win &mdash; Lutzenberger, Maraniss, the children&rsquo;s suit.</li><li><b>Resolution:</b> everyday actions plus Hopkins&rsquo; hopeful vision.</li></ul></div></div></section>
+
+      <section class="slide"><p class="eyebrow">09 / Literary analysis III</p><h2>Point of view, theme, and style</h2><div class="two"><div class="card"><h3>Point of view &middot; Theme</h3><p>First person (&ldquo;we,&rdquo; &ldquo;us&rdquo;) shifting to direct second-person address (&ldquo;you&rdquo;) &mdash; the speaker argues side by side with the reader, then turns the challenge onto them.</p><p>Theme: individual responsibility; stewardship over exploitation (&ldquo;give and take&rdquo;); inner balance reflected in ecological balance.</p></div><div class="card"><h3>Symbolism &amp; style / structure</h3><p><b>Symbols:</b> Mt. Everest (even remote places are touched), the anitos and Mariang Makiling / Mariang Dolores (reverence for nature), Hopkins&rsquo; &ldquo;shook foil&rdquo; and &ldquo;bright wings&rdquo; (renewal).</p><p><b>Style / structure:</b> essay moving from event to evidence to personal appeal; anecdote + argument + poetic allusion; rhetorical questions and parallelism; ends by quoting a poem.</p></div></div></section>
+
+      <section class="slide dense"><p class="eyebrow">10 / Literary analysis IV</p><h2>Imagery and language</h2><div class="two"><div class="card"><h3>Imagery and symbolism</h3><p><b>Decay imagery:</b> &ldquo;The forests are shorn of their trees,&rdquo; seas as &ldquo;dumping grounds,&rdquo; shores &ldquo;littered by Coke cans and plastic junk.&rdquo; <b>Living imagery:</b> &ldquo;the rivers were gentle sisters, the winds, an emphatic brother.&rdquo; <b>Symbols:</b> Mt. Everest, the anitos and Mariang Makiling, &ldquo;the ooze of oil crushed&rdquo; (renewal from darkness).</p></div><div class="card"><h3>Language and devices</h3><ul><li><b>Personification:</b> &ldquo;Nature&hellip; has began to falter&rdquo;; &ldquo;gentle sisters&rdquo; rivers.</li><li><b>Antithesis / parallelism:</b> &ldquo;take-take&rdquo; vs. &ldquo;give and take.&rdquo;</li><li><b>Direct address:</b> &ldquo;It is up to you and others like you&hellip;&rdquo;</li><li><b>Rhetorical question:</b> &ldquo;Who says you can&rsquo;t change the world?&rdquo;</li><li><b>Allusion:</b> the closing quotation of Hopkins&rsquo; &ldquo;God&rsquo;s Grandeur&rdquo; (1877).</li></ul></div></div></section>
+
+      <section class="slide"><p class="eyebrow">11 / Conclusion</p><h2>The Earth cannot wait</h2><div class="two"><div><p class="lead">&ldquo;Earth Day&rdquo; documents the largest global demonstration in history &mdash; and turns it into a personal challenge, from &ldquo;take-take&rdquo; to &ldquo;give and take,&rdquo; from mass movement to the individual &ldquo;YOU.&rdquo;</p><p class="lead">Decades later, the same warnings remain in our headlines. Prieto&rsquo;s argument that individuals, not institutions, drive change is more relevant than ever.</p></div><div class="quote">&ldquo;Take one small action for the earth this week &mdash; and let care grow from there.&rdquo;<small>Closing message prepared for this presentation</small></div></div></section>
+
+      <section class="slide"><div class="earth" style="right:14%;bottom:12%"></div><p class="eyebrow">12 / Closing reflection</p><h1 style="font-size:clamp(46px,7vw,96px)">Thank You<br>for Listening!</h1><div class="quote">&ldquo;The important thing is to care &mdash; and care is always manifested in little things.&rdquo;<small>From the essay &ldquo;Earth Day&rdquo; by Maria Agnes Prieto</small></div></section>
+
+    </main>
+    <footer class="controls"><div class="actions"><button id="prev" type="button" aria-label="Previous slide">&larr; Previous</button><button id="next" type="button" aria-label="Next slide">Next &rarr;</button><button id="full" type="button" aria-label="Enter fullscreen">Fullscreen</button></div><div class="hint">Use &larr; &rarr; keys to navigate</div></footer><nav id="dots" aria-label="Slide navigation"></nav>
+    <div id="vignette"></div><div id="ambient" aria-hidden="true"></div>
+  </div>
+  <script>
+    const slides=[...document.querySelectorAll('.slide')], progress=document.getElementById('progress'), counter=document.getElementById('counter'), dotsWrap=document.getElementById('dots'); let current=0;
+    const colors=['#2d7a56','#e8b85b','#5aa172','#2f8290'];
+    const dots=slides.map((_,i)=>{const dot=document.createElement('button');dot.className='dot-nav';dot.type='button';dot.setAttribute('aria-label','Go to slide '+(i+1));dot.addEventListener('click',()=>show(i));dotsWrap.appendChild(dot);return dot;});
+    function show(index){current=(index+slides.length)%slides.length;slides.forEach((s,i)=>{s.classList.toggle('active',i===current);s.classList.toggle('before',i<current);s.classList.toggle('rev',i%2===1);dots[i].classList.toggle('on',i===current);});counter.textContent=String(current+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');progress.style.width=((current+1)/slides.length*100)+'%';slides[current].scrollTop=0;if(current===slides.length-1)burst();}
+    function next(){show(current+1)}function prev(){show(current-1)}
+    document.getElementById('prev').addEventListener('click',prev);document.getElementById('next').addEventListener('click',next);
+    document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ')next();if(e.key==='ArrowLeft'||e.key==='PageUp')prev();if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1);});
+    document.getElementById('full').addEventListener('click',()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.();});
+    document.addEventListener('mousemove',e=>{const nx=e.clientX/innerWidth-.5,ny=e.clientY/innerHeight-.5;document.querySelectorAll('.slide.active .earth').forEach(el=>{el.style.marginLeft=(nx*-10)+'px';el.style.marginTop=(ny*-6)+'px';});});
+    let touchX=null,touchY=null;document.addEventListener('touchstart',e=>{touchX=e.touches[0].clientX;touchY=e.touches[0].clientY},{passive:true});document.addEventListener('touchend',e=>{if(touchX===null)return;const dx=e.changedTouches[0].clientX-touchX,dy=e.changedTouches[0].clientY-touchY;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){if(dx<0)next();else prev();}touchX=null;touchY=null;},{passive:true});
+    function burst(){const ambient=document.getElementById('ambient');for(let i=0;i<20;i++){const leaf=document.createElement('span');leaf.className='amb-leaf';leaf.textContent='◆';leaf.style.left=Math.random()*100+'vw';leaf.style.color=colors[i%colors.length];leaf.style.fontSize=12+Math.random()*18+'px';leaf.style.setProperty('--dx',(Math.random()*180-90)+'px');leaf.style.animationDuration=5+Math.random()*4+'s';ambient.appendChild(leaf);leaf.addEventListener('animationend',()=>leaf.remove(),{once:true});}}
+    show(0);
+  </script>
+</body>
+</html>
