@@ -171,6 +171,20 @@
     @keyframes wobble{from{margin-left:-14px}to{margin-left:14px}}
     .ripple{position:fixed;z-index:10;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;border:2px solid var(--gold);pointer-events:none;animation:rip .8s ease-out forwards}
     @keyframes rip{to{transform:scale(9);opacity:0}}
+  
+    /* ===== Hide controls in fullscreen (reveal on mouse move) ===== */
+    body.is-fs .controls,body.is-fs #dots{opacity:0;pointer-events:none;transition:opacity .3s}
+    body.is-fs.show-ui .controls,body.is-fs.show-ui #dots{opacity:1;pointer-events:auto}
+    body.is-fs .hint{display:none}
+  
+    /* ===== Presenters ===== */
+    .presenters{margin-top:3.2vh;max-width:min(680px,52vw)}
+    .plabel{margin:0 0 1.4vh;font-size:max(12px,.95vw);font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#1d6444;display:flex;align-items:center;gap:12px}
+    .plabel:after{content:"";height:2px;flex:1;border-radius:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+    .presenters ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:max(8px,.9vw)}
+    .presenters li{display:flex;align-items:center;gap:10px;padding:max(9px,.9vh) max(14px,1vw);border-radius:99px;background:rgba(255,253,247,.9);border:1.5px solid rgba(45,122,86,.25);color:var(--deep);font-weight:700;font-size:max(14px,1.15vw);box-shadow:0 6px 18px rgba(29,76,51,.07)}
+    .presenters li:before{content:"";width:9px;height:9px;border-radius:50%;background:var(--gold);flex:none}
+    @media(max-width:820px){.presenters{max-width:100%;margin-top:22px}.plabel{font-size:11px}.presenters ul{grid-template-columns:1fr;gap:8px}.presenters li{font-size:15px;padding:10px 14px}}
   </style>
 </head>
 <body>
@@ -179,7 +193,7 @@
     <header class="topbar"><div class="brand">Literature / Environmental writing</div><div class="counter" id="counter">01 / 13</div></header>
     <main>
 
-      <section class="slide active"><div class="leafmark">&#10087;</div><div class="earth"></div><p class="eyebrow">A Literary Analysis Presentation</p><h1>Earth Day</h1><p class="subtitle">by Maria Agnes Prieto &middot; Literary Analysis and Interpretation &middot; Philippine Literature Class</p><div class="byline"><span class="dot"></span><span>Presented by Angel Abigail Miguel Toriba, Lenon Libres, Leonard Anthony Quijada</span></div></section>
+      <section class="slide active"><div class="leafmark">&#10087;</div><div class="earth"></div><p class="eyebrow">A Literary Analysis Presentation</p><h1>Earth Day</h1><p class="subtitle">by Maria Agnes Prieto &middot; Philippine Literature</p><div class="presenters"><p class="plabel">Presented by</p><ul><li>Angel Abigail Miguel Toriba</li><li>Conixx Reserva</li><li>Lenon Libres</li><li>Leonard Anthony Quijada</li></ul></div></section>
 
       <section class="slide"><p class="eyebrow">01 / About the author</p><h2>About the Author</h2><div class="two"><div class="card"><h3>Maria Agnes Prieto</h3><p>Maria Agnes Prieto is a Filipino essayist known for &ldquo;Earth Day,&rdquo; a reflective essay written to commemorate the global Earth Day celebration of 1990. Detailed public biographical records about her are scarce; what can be established comes largely from the essay itself and its historical context.</p></div><div class="card"><h3>Evidence from the text &middot; Writer&rsquo;s voice</h3><p>The essay is anchored in the events of 1990: US President George Bush&rsquo;s resistance to a carbon-dioxide treaty, Jose Lutzenberger&rsquo;s appointment as Brazil&rsquo;s Environment Secretary, and the Texas coastal cleanup &mdash; placing it at the first modern Earth Day (April 1990).</p><p>Prieto writes as an engaged Filipino citizen, citing local events (the children&rsquo;s suit against DENR Secretary Jun Factoran, the Calaca and Lemery picket) and Filipino folklore (Mariang Makiling, Mariang Dolores, the anitos), blending global reporting with Philippine culture.</p></div></div></section>
 
@@ -228,6 +242,10 @@
       setInterval(()=>{if(document.hidden||amb.children.length>14)return;const l=document.createElement('span');l.className='amb-leaf';l.textContent=glyphs[Math.floor(Math.random()*glyphs.length)];l.style.left=Math.random()*100+'vw';l.style.color=colors[Math.floor(Math.random()*colors.length)];l.style.fontSize=14+Math.random()*16+'px';l.style.opacity=.5;l.style.setProperty('--dx',(Math.random()*200-100)+'px');l.style.animationDuration=(9+Math.random()*6)+'s,'+(2.5+Math.random()*2)+'s';amb.appendChild(l);l.addEventListener('animationend',e=>{if(e.animationName==='fall')l.remove()});},1600);
       document.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;const r=document.createElement('span');r.className='ripple';r.style.left=e.clientX+'px';r.style.top=e.clientY+'px';document.body.appendChild(r);r.addEventListener('animationend',()=>r.remove());});
     })();
+    /* ===== Fullscreen: hide controls, reveal on mouse move ===== */
+    let uiTimer;
+    document.addEventListener('fullscreenchange',()=>{document.body.classList.toggle('is-fs',!!document.fullscreenElement);document.body.classList.remove('show-ui');});
+    document.addEventListener('mousemove',()=>{if(!document.fullscreenElement)return;document.body.classList.add('show-ui');clearTimeout(uiTimer);uiTimer=setTimeout(()=>document.body.classList.remove('show-ui'),2000);});
     show(0);
   </script>
 </body>
